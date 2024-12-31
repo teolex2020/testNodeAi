@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Демонстрація в режимі реального часу для кількох персонажів</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="default-theme">
+  <main class="container">
+    <h1>Демонстрація в режимі реального часу для кількох персонажів</h1>
+
+    <!-- Форма налаштувань -->
+    <section class="settings">
+      <h2>Налаштування сесії</h2>
+
+      <!-- Персонаж -->
+      <label for="characterSelect">Персонаж:</label>
+      <select id="characterSelect">
+        <option value="dolores" selected>Долорес (Westworld)</option>
+        <option value="jack">Капітан Джек Горобець</option>
+        <option value="wednesday">Венздей</option>
+        <option value="hermione">Герміона</option>
+      </select>
+
+      <!-- Додаткова інструкція -->
+      <label for="systemInstruction">Додаткова інструкція:</label>
+      <textarea id="systemInstruction" rows="2" placeholder="Додайте, як персонаж має поводитися..."></textarea>
+
+      <!-- Голос -->
+      <label for="voiceSelect">Голос:</label>
+      <select id="voiceSelect">
+        <!-- Змінюється динамічно в main.js -->
+      </select>
+
+      <!-- Мова -->
+      <label for="languageSelect">Мова:</label>
+      <select id="languageSelect">
+        <option value="en" selected>Англійська</option>
+        <option value="ru">Російська</option>
+        <option value="es">Іспанська</option>
+        <option value="ja">Японська</option>
+      </select>
+
+      <!-- Відключення підказки мови -->
+      <div class="checkbox-row">
+        <input type="checkbox" id="disableLangHint">
+        <label for="disableLangHint">Вимкнути мовну підказку</label>
+      </div>
+
+      <!-- VAD -->
+      <label for="turnDetectionSelect">Розпізнавання голосової активності (VAD):</label>
+      <select id="turnDetectionSelect">
+        <option value="server_vad" selected>Увімкнено (server_vad)</option>
+        <option value="none">Вимкнено (none)</option>
+      </select>
+
+      <!-- Температура -->
+      <label for="temperatureRange">Температура (0 - 2):
+        <span id="temperatureValue">1</span>
+      </label>
+      <input type="range" id="temperatureRange" min="0" max="2" step="0.01" value="1">
+
+      <!-- Максимальна кількість токенів -->
+      <label for="maxTokens">Максимальна кількість токенів:</label>
+      <input type="number" id="maxTokens" min="1" step="1" value="2000">
+
+      <!-- Вибір інструменту -->
+      <label for="toolChoiceSelect">tool_choice (виклик функції):</label>
+      <select id="toolChoiceSelect">
+        <option value="auto" selected>автоматично</option>
+        <option value="manual">вручну</option>
+        <option value="none">без вибору</option>
+      </select>
+
+      <!-- кнопки -->
+      <div class="buttons">
+        <button id="startBtn" class="start">Підключитися</button>
+        <button id="stopBtn" class="stop" disabled>Відключитися</button>
+      </div>
+    </section>
+
+    <!-- Вкладки -->
+    <nav class="tabs">
+      <button id="showConversationTab" class="active-tab">Діалог</button>
+      <button id="showLogsTab">Журнал</button>
+    </nav>
+
+    <!-- Контейнер для вкладок -->
+    <section class="tabs-container">
+      <!-- Вкладка Діалог -->
+      <div id="conversationTab" class="tab-content visible">
+        <h2>Діалог</h2>
+        <div id="conversationOutput" class="conversationOutput"></div>
+      </div>
+
+      <!-- Вкладка Журнал -->
+      <div id="logsTab" class="tab-content">
+        <h2>Журнал</h2>
+        <div id="consoleOutput" class="consoleOutput"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
